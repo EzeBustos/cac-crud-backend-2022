@@ -56,9 +56,10 @@ public class AppServlet extends HttpServlet {
                 request.getRequestDispatcher(URI_REMOVE).forward(request, response);
                 break;
             default:
-                request.setAttribute("listaAlumnos", model.getAlumnos());
-                request.getRequestDispatcher(URI_LIST).forward(request, response);
-                //response.sendRedirect(URI_LIST);
+                HttpSession sesionHttp = request.getSession();
+                sesionHttp.setAttribute("listaAlumnos", model.getAlumnos());
+                //request.getRequestDispatcher(URI_LIST).forward(request, response);
+                response.sendRedirect(URI_LIST);
         }
     }
 
