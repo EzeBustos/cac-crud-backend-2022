@@ -20,10 +20,10 @@ import java.util.logging.Logger;
 public class ModeloMySQL implements Modelo {
 
     private static final String GET_ALL_QUERY = "SELECT * FROM jugadores";
-    private static final String GET_BY_ID_QUERY = "SELECT * FROM jugadores WHERE id_player = ?";
+    private static final String GET_BY_ID_QUERY = "SELECT * FROM jugadores WHERE id = ?";
     private static final String ADD_QUERY = "INSERT INTO jugadores VALUES (null, ?, ?, ?, ?, ?, ?, ?) ";
-    private static final String UPDATE_QUERY = "UPDATE jugadores SET nombre = ?, apellido = ?, edad = ?, altura = ?, posicion = ?, equipoActual = ?, fotoBase64 = ? WHERE id_player = ?";
-    private static final String DELETE_QUERY = "DELETE FROM jugadores WHERE id_player = ?";
+    private static final String UPDATE_QUERY = "UPDATE jugadores SET nombre = ?, apellido = ?, edad = ?, altura = ?, posicion = ?, equipoActual = ?, fotoBase64 = ? WHERE id = ?";
+    private static final String DELETE_QUERY = "DELETE FROM jugadores WHERE id = ?";
 
     @Override
     public List<Alumno> getAlumnos() {
@@ -101,7 +101,7 @@ public class ModeloMySQL implements Modelo {
     }
 
     private Alumno rsToAlumno(ResultSet rs) throws SQLException {
-        int id = rs.getInt("id_player");
+        int id = rs.getInt("id");
         String nombre = rs.getString("nombre");
         String apellido = rs.getString("apellido");
         int edad = rs.getInt("edad");
